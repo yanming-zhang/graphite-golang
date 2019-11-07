@@ -78,7 +78,7 @@ func (graphite *Graphite) Disconnect() error {
 }
 
 func (graphite Graphite) GetNetconn() net.Conn {
-	return graphite.conn != nil
+	return (graphite.conn != nil)
 }
 
 // Given a Metric struct, the SendMetric method sends the supplied metric to the
