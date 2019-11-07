@@ -11,13 +11,13 @@ import (
 // Graphite is a struct that defines the relevant properties of a graphite
 // connection
 type Graphite struct {
-	Host     string
-	Port     int
-	Protocol string
-	Timeout  time.Duration
-	Prefix   string
-	conn     net.Conn
-	nop      bool
+	Host       string
+	Port       int
+	Protocol   string
+	Timeout    time.Duration
+	Prefix     string
+	conn       net.Conn
+	nop        bool
 	DisableLog bool
 }
 
@@ -75,6 +75,10 @@ func (graphite *Graphite) Disconnect() error {
 	err := graphite.conn.Close()
 	graphite.conn = nil
 	return err
+}
+
+func (graphite Graphite) GetNetconn() net.Conn {
+	return graphite.conn
 }
 
 // Given a Metric struct, the SendMetric method sends the supplied metric to the
